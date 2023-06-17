@@ -429,7 +429,7 @@
                 <div class="col-lg-6">
 
                     <!-- Registration Form -->
-                    <form>
+                    <form id="myForm">
                         <div class="mb-4 form-floating">
                             <input type="text" class="form-control" id="floatingInput1" placeholder="Name">
                             <label for="floatingInput1">Name</label>
@@ -448,8 +448,26 @@
                                     href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &
                                     Conditions</a></label>
                         </div>
-                        <button type="submit" class="form-control-submit-button">Send</button>
+                        <button type="submit" class="form-control-submit-button" value="submit">Send</button>
                     </form>
+
+                    <script>
+                        document.getElementById("myForm").addEventListener("submit", function (event) {
+                            event.preventDefault(); // Prevent form submission
+
+                            // Get form values
+                            var name = document.getElementById("floatingInput1").value;
+                            var email = document.getElementById("floatingInput2").value;
+                            var email = document.getElementById("floatingInput3").value;
+
+                            // Create mailto URL with form values
+                            var mailtoUrl = "mailto:bonfacenyatangi@gmail.com?subject=Form Submission&body=Name: " +
+                                encodeURIComponent(name) + "%0AEmail: " + encodeURIComponent(email);
+
+                            // Open the default email client
+                            window.location.href = mailtoUrl;
+                        });
+                    </script>
                     <!-- end of registrations form -->
 
                 </div> <!-- end of col -->

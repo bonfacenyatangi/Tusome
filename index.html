@@ -457,16 +457,16 @@
 
                             // Get form values
                             var name = document.getElementById("floatingInput1").value;
-                            var email = document.getElementById("floatingInput2").value;
+                            var phone = document.getElementById("floatingInput2").value;
                             var email = document.getElementById("floatingInput3").value;
 
                             // Create mailto URL with form values
-                            var mailtoUrl = "mailto:bonfacenyatangi@gmail.com?subject=Form Submission&body=Name: " +
-                                encodeURIComponent(name) + "%0AEmail: " + encodeURIComponent(email);
+                            var mailtoUrl = "mailto:bonfacenyatangi@gmail.com?subject=Form Submission&body=Name: " + encodeURIComponent(name) + "%0APhone: " + encodeURIComponent(phone) + "%0AEmail: " + encodeURIComponent(email);
 
                             // Open the default email client
                             window.location.href = mailtoUrl;
                         });
+
                     </script>
                     <!-- end of registrations form -->
 

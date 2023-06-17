@@ -2214,8 +2214,8 @@ a:hover {
     /* CSS for the floating WhatsApp icon */
     .whatsapp-icon {
 		position: fixed;
-		bottom: 50px;
-		left: 80px; /* Updated left position */
+		bottom: 30px;
+		left: 40px; /* Updated left position */
 		transform: translateX(-50%);
 		width: 60px;
 		height: 60px;

@@ -594,6 +594,30 @@
     </button>
     <!-- end of back to top button -->
 
+
+    <!-- WhatsApp icon markup -->
+    <a href="javascript:void(0);" class="whatsapp-icon" onclick="redirectToWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript code -->
+    <script>
+        function redirectToWhatsApp() {
+            var phoneNumber = '+254798682047'; // Replace with your specific WhatsApp number
+
+            // Format the phone number to include the country code
+            phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+            phoneNumber = phoneNumber.startsWith('1') ? '+' + phoneNumber : '+1' + phoneNumber;
+
+            // Redirect the user to WhatsApp with the specified number
+            window.location.href = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
+        }
+    </script>
+
+    <!-- Add Font Awesome for the WhatsApp icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
     <!-- Scripts -->
     <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
     <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->

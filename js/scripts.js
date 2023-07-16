@@ -14,7 +14,7 @@ window.onload = function () {
 function scrollFunction() {
 	if (document.documentElement.scrollTop > 30) {
 		document.getElementById("navbarExample").classList.add("top-nav-collapse");
-	} else if ( document.documentElement.scrollTop < 30 ) {
+	} else if (document.documentElement.scrollTop < 30) {
 		document.getElementById("navbarExample").classList.remove("top-nav-collapse");
 	}
 }
@@ -29,7 +29,7 @@ for (let i = 0; i < elements.length; i++) {
 }
 
 document.querySelector(".navbar-toggler").addEventListener("click", () => {
-  	document.querySelector(".offcanvas-collapse").classList.toggle("open");
+	document.querySelector(".offcanvas-collapse").classList.toggle("open");
 });
 
 // Hover on desktop
@@ -39,11 +39,11 @@ function toggleDropdown(e) {
 
 	setTimeout(
 		function () {
-		const shouldOpen = _d.matches(":hover");
-		_m.classList.toggle("show", shouldOpen);
-		_d.classList.toggle("show", shouldOpen);
+			const shouldOpen = _d.matches(":hover");
+			_m.classList.toggle("show", shouldOpen);
+			_d.classList.toggle("show", shouldOpen);
 
-		_d.setAttribute("aria-expanded", shouldOpen);
+			_d.setAttribute("aria-expanded", shouldOpen);
 		},
 		e.type === "mouseleave" ? 300 : 0
 	);
@@ -52,7 +52,7 @@ function toggleDropdown(e) {
 // On hover
 const dropdownCheck = document.querySelector('.dropdown');
 
-if (dropdownCheck !== null) { 
+if (dropdownCheck !== null) {
 	document.querySelector(".dropdown").addEventListener("mouseleave", toggleDropdown);
 	document.querySelector(".dropdown").addEventListener("mouseover", toggleDropdown);
 
@@ -73,7 +73,7 @@ if (dropdownCheck !== null) {
 
 /* Rotating Text - ReplaceMe */
 var checkReplace = document.querySelector('.replace-me');
-if (checkReplace !== null) { 
+if (checkReplace !== null) {
 	var replace = new ReplaceMe(document.querySelector('.replace-me'), {
 		animation: 'animated fadeIn',                       // Animation class or classes
 		speed: 2000,                                        // Delay between each phrase in miliseconds
@@ -119,36 +119,36 @@ var cardSlider = new Swiper('.card-slider', {
 /* Filter - Isotope */
 const gridCheck = document.querySelector('.grid');
 
-if (gridCheck !== null) { 
+if (gridCheck !== null) {
 	// init Isotope
-	var iso = new Isotope( '.grid', {
+	var iso = new Isotope('.grid', {
 		itemSelector: '.element-item',
 		layoutMode: 'fitRows'
 	});
 
 	// bind filter button click
 	var filtersElem = document.querySelector('.filters-button-group');
-	filtersElem.addEventListener( 'click', function( event ) {
+	filtersElem.addEventListener('click', function (event) {
 		// only work with buttons
-		if ( !matchesSelector( event.target, 'button' ) )  {
+		if (!matchesSelector(event.target, 'button')) {
 			return;
 		}
 		var filterValue = event.target.getAttribute('data-filter');
 		// use matching filter function
 		iso.arrange({ filter: filterValue });
 	});
-	
+
 	// change is-checked class on buttons
 	var buttonGroups = document.querySelectorAll('.button-group');
-	for ( var i=0, len = buttonGroups.length; i < len; i++ ) {
+	for (var i = 0, len = buttonGroups.length; i < len; i++) {
 		var buttonGroup = buttonGroups[i];
-		radioButtonGroup( buttonGroup );
+		radioButtonGroup(buttonGroup);
 	}
-	
-	function radioButtonGroup( buttonGroup ) {
-		buttonGroup.addEventListener( 'click', function( event ) {
+
+	function radioButtonGroup(buttonGroup) {
+		buttonGroup.addEventListener('click', function (event) {
 			// only work with buttons
-			if ( !matchesSelector( event.target, 'button' ) )  {
+			if (!matchesSelector(event.target, 'button')) {
 				return;
 			}
 			buttonGroup.querySelector('.is-checked').classList.remove('is-checked');
@@ -175,4 +175,37 @@ function scrollFunctionBTT() {
 function topFunction() {
 	document.body.scrollTop = 0; // for Safari
 	document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE and Opera
+}
+
+// Download documents 
+// PDF urls
+const pdf1 = '../images/f1.pdf';
+const pdf2 = '../images/f1.pdf';
+const pdf3 = '../images/f2.pdf';
+
+// Get button elements
+const btn1 = document.getElementById('pdf1');
+const btn2 = document.getElementById('pdf2');
+const btn3 = document.getElementById('pdf3');
+
+// Add event listeners
+btn1.addEventListener('click', () => downloadPDF(pdf1));
+btn2.addEventListener('click', () => downloadPDF(pdf2));
+btn3.addEventListener('click', () => downloadPDF(pdf3));
+
+// Download PDF function
+function downloadPDF(pdfUrl) {
+	fetch(pdfUrl)
+		.then(res => res.blob())
+		.then(file => {
+			const pdfUrl = URL.createObjectURL(file);
+			const a = document.createElement('a');
+			a.href = pdfUrl;
+			a.download = pdfUrl.replace(/^.*[\\\/]/, '');
+			document.body.appendChild(a);
+			a.click();
+			a.remove();
+			URL.revokeObjectURL(pdfUrl);
+		})
+		.catch(error => console.log(error));
 }

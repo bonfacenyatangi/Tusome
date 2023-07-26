@@ -177,21 +177,21 @@ function topFunction() {
 	document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE and Opera
 }
 
-// Download documents 
+
+// Download documents
 // PDF urls
-const pdf1 = '../images/f1.pdf';
-const pdf2 = '../images/f1.pdf';
-const pdf3 = '../images/f2.pdf';
+const pdfUrls = [
+	'../assets/f1.pdf', '../assets/f2.pdf', '../assets/f3.pdf',
+	'../assets/f4.pdf', '../assets/f5.pdf', '../assets/f6.pdf',
+	'../assets/f7.pdf', '../assets/f8.pdf', '../assets/f9.pdf',
+	'../assets/f10.pdf', '../assets/f11.pdf', '../assets/f12.pdf'
+];
 
-// Get button elements
-const btn1 = document.getElementById('pdf1');
-const btn2 = document.getElementById('pdf2');
-const btn3 = document.getElementById('pdf3');
-
-// Add event listeners
-btn1.addEventListener('click', () => downloadPDF(pdf1));
-btn2.addEventListener('click', () => downloadPDF(pdf2));
-btn3.addEventListener('click', () => downloadPDF(pdf3));
+// Get button elements and add event listeners
+for (let i = 0; i < pdfUrls.length; i++) {
+	const btn = document.getElementById(`pdf${i + 1}`);
+	btn.addEventListener('click', () => downloadPDF(pdfUrls[i]));
+}
 
 // Download PDF function
 function downloadPDF(pdfUrl) {
@@ -209,3 +209,4 @@ function downloadPDF(pdfUrl) {
 		})
 		.catch(error => console.log(error));
 }
+
